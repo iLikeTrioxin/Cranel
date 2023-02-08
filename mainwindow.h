@@ -8,7 +8,9 @@
 DECLARE_QT_CLASS(MainWindow)
 
 extern void* myLabell;
-
+#include <
+#include "MultiCameraTracker.h"
+#include <QCameraInfo>
 class MainWindow : public QMainWindow {
     Q_OBJECT
     QTimer _timer;
@@ -21,5 +23,6 @@ public:
 
 private:
     cv::Mat* img;
+    MultiCameraTracker multiCameraTracker;
     Ui::MainWindow *ui;
 };

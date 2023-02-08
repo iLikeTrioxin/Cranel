@@ -13,16 +13,13 @@ void depth_cb(freenect_device* dev, void* data, uint32_t timestamp);
 
 class KinectCamera: public CranelCamera {
 public:
-    cv::Mat getFrame() override {
-        if(freenect_process_events(fn_ctx) < 0) return {};
+    void nextFrame() override {
+        if(freenect_process_events(fn_ctx) < 0) return;
         pthread_mutex_lock(&gl_backbuf_mutex);
 
-        cv::Mat tmp = cv::Mat(480,640, CV_8U, cv::Scalar(0));
-        memcpy(tmp.data, video_back, 640*480);
+        memcpy(this->frame.data, video_back, 640*480);
 
         pthread_mutex_unlock(&gl_backbuf_mutex);
-
-        return tmp;
     }
 
     KinectCamera(){

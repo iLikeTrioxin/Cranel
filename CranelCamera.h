@@ -4,6 +4,14 @@
 
 class CranelCamera {
 public:
-    virtual cv::Mat getFrame() = 0;
+    const cv::Mat& getFrame(bool nextFrame = true) {
+        if(nextFrame) this->nextFrame();
+        return frame;
+    }
+
+    virtual void nextFrame() = 0;
     virtual ~CranelCamera() = default;
+
+protected:
+    cv::Mat frame;
 };

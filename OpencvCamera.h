@@ -6,7 +6,7 @@ class OpenCVCamera : public CranelCamera {
 public:
     explicit OpenCVCamera(int cameraId = 0);
 
-    cv::Mat getFrame() override;
+    void nextFrame() override;
 
     ~OpenCVCamera() override = default;
 

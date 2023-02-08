@@ -13,9 +13,11 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(libfreenect REQUIRED)
 find_package(OpenCV REQUIRED)
-find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets LinguistTools)
-find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets LinguistTools)
-find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets LinguistTools)
+find_package(Qt5Multimedia)
+
+find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets LinguistTools Multimedia)
+find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets LinguistTools Multimedia)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets LinguistTools Multimedia)
 
 set(TS_FILES Cranel_en_US.ts)
 
@@ -31,6 +33,7 @@ set(PROJECT_SOURCES
         KinectCamera.h
         KinectCamera.cpp
         OpencvCamera.cpp
+        MultiCameraTracker.cpp
         TrackerClassifier.cpp
         MyBracelet.cpp
         i.hpp

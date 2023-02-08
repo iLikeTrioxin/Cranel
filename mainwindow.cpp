@@ -26,6 +26,13 @@ MainWindow::MainWindow(QWidget *parent, cv::Mat* img)
     connect(ui->cameraSub, &QPushButton::pressed, &callb);
     cameraSel = ui->cameraSel;
 
+    QList<QCameraInfo> cameras = QCameraInfo::availableCameras();
+    foreach (const QCameraInfo &cameraInfo, cameras) {
+        std::cout << "Name: " << cameraInfo.deviceName();
+        std::cout << "Position: " << cameraInfo.position();
+        std::cout << "Orientation: " << cameraInfo.orientation();
+    }
+
     _timer.start(10 /*call the timer every 10 ms*/);
 }
 
